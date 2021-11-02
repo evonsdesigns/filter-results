@@ -1,0 +1,9 @@
+{
+    "name": "Filter Results",
+    "description": "Filter results on a popular book store search/page",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "filter.js"
+      }
+  }
