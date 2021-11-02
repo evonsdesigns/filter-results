@@ -4,6 +4,16 @@
     "version": "1.0",
     "manifest_version": 3,
     "background": {
-        "service_worker": "filter.js"
-      }
-  }
+        "service_worker": "background-clean.js"
+      },
+    "action": {
+        "default_popup": "info.html"
+    },
+    "permissions": ["storage", "activeTab", "scripting"],
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": [
+            "jquery.min.js"
+        ]
+    }]
+}
