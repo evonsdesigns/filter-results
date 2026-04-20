@@ -1,19 +1,35 @@
 {
-    "name": "Filter Results",
-    "description": "Filter results on a popular book store search/page",
-    "version": "1.0",
+    "name": "Amazon Brand Filter",
+    "description": "Automatically hides Amazon search results from weirdly-named Chinese dropshipper brands using pattern heuristics.",
+    "version": "2.1",
     "manifest_version": 3,
     "background": {
         "service_worker": "background-clean.js"
-      },
+    },
     "action": {
         "default_popup": "info.html"
     },
-    "permissions": ["storage", "activeTab", "scripting"],
+    "permissions": ["storage", "activeTab", "scripting", "tabs"],
+    "host_permissions": [
+        "*://*.amazon.com/*",
+        "*://*.amazon.co.uk/*",
+        "*://*.amazon.ca/*",
+        "*://*.amazon.com.au/*",
+        "*://*.amazon.de/*",
+        "*://*.amazon.fr/*",
+        "*://*.amazon.co.jp/*"
+    ],
     "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "js": [
-            "jquery.min.js"
-        ]
+        "matches": [
+            "*://*.amazon.com/*",
+            "*://*.amazon.co.uk/*",
+            "*://*.amazon.ca/*",
+            "*://*.amazon.com.au/*",
+            "*://*.amazon.de/*",
+            "*://*.amazon.fr/*",
+            "*://*.amazon.co.jp/*"
+        ],
+        "js": ["content.js"],
+        "run_at": "document_idle"
     }]
 }
